@@ -1,0 +1,30 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home | Categories</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+
+<div class="container">
+    <h2>Categories</h2>
+    <div class="category-grid">
+        {% for category in categories %}
+        <div class="category-card">
+            <img src="{{ category.img.url }}" alt="{{ category.name }}">
+            <h3>{{ category.name }}</h3>
+            {% if category.sub %}
+            <div class="subcategories">
+                <strong>Subcategory:</strong> {{ category.sub.name }}
+            </div>
+            {% endif %}
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+</body>
+</html>

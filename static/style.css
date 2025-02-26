@@ -1,0 +1,51 @@
+body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 90%;
+            margin: auto;
+        }
+        .category-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+            padding: 20px 0;
+        }
+        .category-card {
+            display: flex;
+            align-items: center;  /* Align image and text vertically */
+            gap: 10px;  /* Add space between image and text */
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
+            transition: transform 0.2s ease-in-out;
+            background: white;
+            width: 200px;
+        }
+
+        .category-card:hover {
+            cursor: pointer;
+            transform: scale(1.05);
+        }
+
+        .category-card img {
+            width: 32px;
+            height: 32px;
+            object-fit: contain;
+        }
+
+        .category-card h3 {
+            margin: 0;
+            font-size: 16px;
+            flex-grow: 1; /* Allows text to take up remaining space */
+        }
+
+        .subcategories {
+            margin-top: 10px;
+            font-size: 14px;
+            color: gray;
+        }
