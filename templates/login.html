@@ -1,0 +1,32 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Нэвтрэх</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+{% include 'header.html' %}
+    <div class="login-container">
+        <h2>Нэвтрэх хэсэг</h2>
+        {% if form.errors %}
+            <ul class="errorlist">
+                {% for field in form %}
+                    {% for error in field.errors %}
+                        <li>{{ field.label }}: {{ error }}</li>
+                    {% endfor %}
+                {% endfor %}
+                {% for error in form.non_field_errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+        <form method="post">
+            {% csrf_token %}
+            Нэвтрэх нэр: {{ form.username }}
+            Нууц үг: {{ form.password }}
+            <button type="submit">Нэвтрэх</button>
+        </form>
+    </div>
+</body>
+</html>

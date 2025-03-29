@@ -1,55 +1,44 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Unegui.mn</title>
+    <title>{{ category.name }} Posts</title>
     <link rel="stylesheet" href="{% static 'style.css' %}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css">
-
 </head>
 <body>
 
 {% include 'header.html' %}
-<div class="container">
-    <div class="category-grid">
-        {% for category in categories %}
-        <div class="category-card">
-            <a href="{% url 'category_post_list' category_id=category.id %}">
-                <img src="{{ category.img.url }}" alt="{{ category.name }}">
-                <h3>{{ category.name }}</h3>
-                {% if category.sub %}
-                <div class="subcategories">
-                    <strong>Дэд ангилал:</strong> {{ category.sub.name }}
-                </div>
-                {% endif %}
-            </a>
-        </div>
-        {% endfor %}
-    </div>
 
-    <h2>Сүүлд нэмэгдсэн зарууд</h2>
-    <div class="post-grid">
+<div class="container">
+    <h1>{{ category.name }} зарууд</h1>
+    <div class="banner">
+        <img src="https://cdn1.unegui.mn/media/banners/UNEGUI_MN_1_1.png">
+    </div>
+    <div class="post-list">
         {% for post in posts %}
         <div class="post-card">
             <a href="{% url 'post_detail' post_id=post.id %}">
                 <div class="post-images">
                     {% for image in post.postimage_set.all %}
-                        <img src="{{ image.img.url }}" alt="Post Image">
+                    <img src="{{ image.img.url }}" alt="Post Image">
                     {% endfor %}
                 </div>
+
                 <h3>{{ post.title }}</h3>
                 <div class="post-details">
                     <span class="post-price">{{ post.price }}</span>
                     <span class="post-subject">{{ post.subject }}</span>
                 </div>
+                <p>{{ post.content }}</p>
             </a>
         </div>
         {% endfor %}
     </div>
+
 </div>
+
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
 <script>

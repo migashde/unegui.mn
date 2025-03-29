@@ -1,0 +1,52 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ post.subject }}</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css">
+</head>
+<body>
+
+{% include 'header.html' %}
+
+<div class="container">
+    <div class="banner">
+        <span class="post-price">{{ post.price }}₮</span>
+        <img src="https://cdn1.unegui.mn/media/banners/UNEGUI_MN_1_1.png" style="width: 100%">
+    </div>
+    <div class="post-detail">
+        <span class="post-subject">{{ post.subject }}</span>
+        <div class="post-images">
+            <div class="main-image">
+                {% if post.postimage_set.first %}
+                <img src="{{ post.postimage_set.first.img.url }}" alt="Main Post Image">
+                {% endif %}
+            </div>
+            <div class="thumbnail-images">
+                {% for image in post.postimage_set.all %}
+                <div class="thumbnail">
+                    <img src="{{ image.img.url }}" alt="Post Thumbnail">
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        <p class="post-content">{{ post.content }}</p>
+        <div class="post-details">
+            <span class="post-views">Үзсэн: {{post.views}}</span>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function(){
+        $('.thumbnail-images .thumbnail img').click(function(){
+            var imageUrl = $(this).attr('src');
+            $('.main-image img').attr('src', imageUrl);
+        });
+    });
+</script>
+</body>
+</html>

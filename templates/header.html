@@ -1,0 +1,20 @@
+<header>
+    <nav>
+        <a href="{% url 'index' %}" class="logo">
+            <img src="https://www.unegui.mn/static/images/logos/unegui.svg" height="25">
+        </a>
+        <ul>
+            {% if user.is_authenticated %}
+                <li><a href="{% url 'add_post' %}"><button>Зар нэмэх</button></a></li>
+                <li>
+                    <form method="post" action="{% url 'logout' %}">
+                        {% csrf_token %}
+                        <button type="submit">Гарах</button>
+                    </form>
+                </li>
+            {% else %}
+            <li><a href="{% url 'login' %}"><button>Нэвтрэх</button></a></li>
+            {% endif %}
+        </ul>
+    </nav>
+</header>

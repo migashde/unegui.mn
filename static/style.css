@@ -3,10 +3,49 @@ body {
     margin: 0;
     padding: 0;
 }
-.container {
-    width: 90%;
+
+header {
+    background-color: #e60803;
+    color: white;
+    padding: 15px 0;
+    text-align: center;
+}
+
+header nav {
+    max-width: 1200px;
     margin: auto;
 }
+
+header .logo {
+    float: left
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: right;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+nav ul li a:hover {
+    text-decoration: underline;
+}
+
+.container {
+    width: 1200px;
+    margin: auto;
+}
+
 .category-grid {
     display: flex;
     flex-wrap: wrap;
@@ -14,7 +53,8 @@ body {
     justify-content: center;
     padding: 20px 0;
 }
-.category-card {
+
+.category-card a {
     display: flex;
     align-items: center;
     gap: 10px;
@@ -25,6 +65,9 @@ body {
     transition: transform 0.2s ease-in-out;
     background: white;
     width: 200px;
+    underline: none;
+    color: #000;
+    text-decoration: none;
 }
 
 .category-card:hover {
@@ -32,13 +75,13 @@ body {
     transform: scale(1.05);
 }
 
-.category-card img {
+.category-card a img {
     width: 32px;
     height: 32px;
     object-fit: contain;
 }
 
-.category-card h3 {
+.category-card a h3 {
     margin: 0;
     font-size: 16px;
     flex-grow: 1;
@@ -57,8 +100,35 @@ body {
     padding: 20px 0;
 }
 
+.post-grid .post-images {
+    margin-top: 0;
+}
+
+.post-grid a {
+    text-decoration: none
+}
+
+.post-list {
+    width: 80%;
+    display: list;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 20px 0;
+}
+
+.post-list a {
+    text-decoration: none
+}
+
+.banner {
+    float: right;
+    width: calc(20% - 30px);
+    margin-left: 30px;
+    margin-top: 25px;
+}
+
 .post-card {
-    width: calc(100%/4);
+    width: 100%;
     float: left;
     border: 1px solid #ddd;
     border-radius: 10px;
@@ -66,6 +136,10 @@ body {
     overflow: hidden;
     transition: transform 0.2s ease-in-out;
     background: white;
+}
+
+.post-list .post-card{
+    margin-bottom: 20px;
 }
 
 .post-card:hover {
@@ -79,11 +153,24 @@ body {
     object-fit: cover;
 }
 
-
 .post-images {
     width: 100%;
     height: 200px; /* Adjust height as needed */
     overflow: hidden;
+}
+
+.post-list .post-images {
+    float: left;
+    width: 40%;
+    margin-top: 0;
+}
+
+.post-grid .slick-dotted.slick-slider {
+    margin-bottom: 0px;
+}
+
+.post-list .slick-dotted.slick-slider {
+    margin-bottom: 0px;
 }
 
 .post-images img {
@@ -103,10 +190,22 @@ body {
     color: #555;
 }
 
+.post-list p {
+    margin-left: 40%;
+    width: 60%;
+    padding: 10px;
+}
+
 .post-details {
     padding: 0 10px 10px 10px;
     font-size: 12px;
     color: #000;
+}
+
+.post-list .post-details {
+    margin-left: 40%;
+    width: 60%;
+    padding: 10px;
 }
 
 .post-details .post-price {
@@ -114,7 +213,157 @@ body {
     font-weight: bold;
     font-size: 1.2rem;
 }
+
 .post-details .post-subject {
     display: block;
     font-size: 1.1rem;
+}
+
+.login-container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    margin: 200px auto;
+}
+
+.login-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.login-container input[type="text"],
+.login-container input[type="password"] {
+    width: calc(100%); /* Adjust width for padding and border */
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box; /* Include padding and border in element's total width and height */
+}
+
+.login-container button {
+    width: 100%;
+}
+
+.errorlist {
+  color: red;
+  list-style-type: none;
+  padding: 0;
+  margin-bottom: 10px;
+}
+
+button {
+    background: #f8c500;
+    color: #000;
+    height: 35px;
+    line-height: 38px;
+    display: inline-block;
+    border-radius: 5px;
+    border: none;
+    font-size: 16px;
+    padding: 0 13px;
+}
+
+button:hover {
+    opacity: .8;
+    cursor: pointer
+}
+
+.post-detail {
+    overflow: hidden;
+    padding: 20px;
+    margin: 20px 0;
+    border-bottom: 1px solid #ccc;
+}
+
+.post-detail .post-subject {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.post-detail .post-images {
+    width: 100%;
+    height: 500px;
+    overflow: hidden;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.post-detail .post-images img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.post-detail .post-content {
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.post-detail .post-details {
+    font-size: 14px;
+    color: #555;
+    margin: 0;
+    padding: 0;
+}
+
+.post-detail .post-details span {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.banner .post-price {
+    background: #f8c500;
+    color: #000;
+    padding: 10px 20px;
+    font-weight: bold;
+    font-size: 1.3rem;
+    border-radius: 4px;
+    width: 100%;
+    display: block;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+}
+
+.post-images {
+    width: 100%;
+    margin-top: 20px;
+}
+
+.main-image {
+    width: 100%;
+    height: 400px;
+    overflow: hidden;
+}
+
+.main-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.thumbnail-images {
+     display: flex;
+    margin-top: 10px;
+    overflow-x: auto;
+    white-space: nowrap;
+    width: min-content;
+}
+
+.thumbnail {
+    width: 100px;
+    height: 80px;
+    margin-right: 5px;
+    overflow: hidden;
+    cursor: pointer;
+    display: inline-block; /* Ensure they lay out horizontally */
+}
+
+.thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
